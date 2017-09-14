@@ -9,8 +9,13 @@ const VeamsLogger = {
 		Veams.devmode = false;
 		Veams.logger = false;
 
-		if (document.location.search.indexOf('devmode') > -1) {
+		if (document.location.search.indexOf('devmode') > -1 ||
+			window.sessionStorage && sessionStorage.getItem('devmodeEnabled')) {
 			Veams.devmode = true;
+
+			if (window.sessionStorage && !sessionStorage.getItem('devmodeEnabled')) {
+				sessionStorage.setItem('devmodeEnabled', true);
+			}
 		}
 
 		if (document.location.search.indexOf('logger') > -1) {
@@ -33,7 +38,9 @@ const VeamsLogger = {
 			console.write = function () {
 				for (let i = 0; i < arguments.length; i++) {
 					if (typeof arguments[i] === 'object') {
-						logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
+						logger.innerHTML +=
+							(JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) +
+							'<br />';
 					} else {
 						logger.innerHTML += arguments[i] + '<br />';
 					}

@@ -1,3 +1,6 @@
+### v1.2.0
+- Add options for defining custom devmode and logger parameters
+
 ### v1.1.0
 - Make devmode persistent for current session
 

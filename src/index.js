@@ -1,15 +1,24 @@
 'use strict';
 
 const VeamsLogger = {
+	options: {
+		devmodeParam: 'devmode',
+		loggerParam: 'logger'
+	},
 	pluginName: 'Logger',
-	initialize: function (Veams) {
+	initialize: function (Veams, opts) {
+
+		if (opts) {
+			this.options = Veams.helpers.extend(this.options, opts || {});
+		}
+
 		/**
 		 * Devmode and logger
 		 */
 		Veams.devmode = false;
 		Veams.logger = false;
 
-		if (document.location.search.indexOf('devmode') > -1 ||
+		if (document.location.search.indexOf(this.options.devmodeParam) > -1 ||
 			window.sessionStorage && sessionStorage.getItem('devmodeEnabled')) {
 			Veams.devmode = true;
 
@@ -18,7 +27,7 @@ const VeamsLogger = {
 			}
 		}
 
-		if (document.location.search.indexOf('logger') > -1) {
+		if (document.location.search.indexOf(this.options.loggerParam) > -1) {
 			Veams.logger = true;
 		}
 

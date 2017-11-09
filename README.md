@@ -14,5 +14,8 @@ import VeamsLogger from 'veams/lib/plugins/logger';
 Veams.initialize();
 
 // Add plugins to the Veams system
-Veams.use(VeamsLogger);
+Veams.use(VeamsLogger, {
+	devmodeParam: 'debug', // default: 'devmode'
+	loggerParam: 'logs' // default: 'logger'
+});
 ```

@@ -1,3 +1,6 @@
+### v1.2.1
+- Update documentation
+
 ### v1.2.0
 - Add options for defining custom devmode and logger parameters
 

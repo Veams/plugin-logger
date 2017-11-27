@@ -1,3 +1,6 @@
+### v1.3.0
+- Add devmode class to document element
+
 ### v1.2.1
 - Update documentation
 

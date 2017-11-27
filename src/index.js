@@ -25,6 +25,8 @@ const VeamsLogger = {
 			if (window.sessionStorage && !sessionStorage.getItem('devmodeEnabled')) {
 				sessionStorage.setItem('devmodeEnabled', true);
 			}
+
+			document.documentElement.classList.add(this.options.devmodeParam);
 		}
 
 		if (document.location.search.indexOf(this.options.loggerParam) > -1) {

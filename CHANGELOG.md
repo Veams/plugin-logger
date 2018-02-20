@@ -1,4 +1,5 @@
 ### v1.3.0
+- Rewrite in typescript
 - Add devmode class to document element
 
 ### v1.2.1

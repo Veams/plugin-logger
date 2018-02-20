@@ -4,18 +4,42 @@ The VeamsLogger plugin disables `console` logs by default. You can provide param
 
 Furthermore it gives you the possibility to add a logger (`?logger`) which will be displayed on other devices.
 
-__How to__
+The plugin is session based, means you only need to add the parameter once you started your project.
+
+TypeScript is supported. 
+
+## Installation
+
+### NPM
+
+``` bash 
+npm install @veams/plugin-logger --save
+```
+
+### Yarn 
+
+``` bash 
+yarn add @veams/plugin-logger
+```
+
+## Usage
 
 ```js
-import Veams from 'veams';
-import VeamsLogger from 'veams/lib/plugins/logger';
+import Veams from '@veams/core';
+import VeamsLogger from '@veams/plugin-logger';
 
 // Intialize core of Veams
-Veams.initialize();
-
-// Add plugins to the Veams system
-Veams.use(VeamsLogger, {
-	devmodeParam: 'debug', // default: 'devmode'
-	loggerParam: 'logs' // default: 'logger'
+Veams.initialize(() => {
+    // Add plugins to the Veams system
+    Veams.use(VeamsLogger, {
+        devmodeParam: 'debug', // default: 'devmode'
+        loggerParam: 'logs' // default: 'logger'
+    });
 });
 ```
+
+### Options
+
+- _devmodeParam_ {`String`} [`'devmode'`] - You can override the url param key for the devmode which shows the logs in console.
+- _loggerParam_ {`String`} [`'logger'`] - You can override the url param key for the logger which gets appended to the body.
+

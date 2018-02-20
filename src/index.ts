@@ -1,15 +1,37 @@
 'use strict';
 
-const VeamsLogger = {
+/**
+ * Imports
+ */
+import extend from "@veams/helpers/lib/object/extend";
+
+/**
+ * Interfaces
+ */
+export interface LoggerOptions {
+	devmodeParam?: string,
+	loggerParam?: string
+}
+
+export interface Logger {
+	options: LoggerOptions,
+	pluginName: string,
+	initialize: any
+}
+
+/**
+ * Plugin
+ */
+const VeamsLogger: Logger = {
 	options: {
 		devmodeParam: 'devmode',
 		loggerParam: 'logger'
 	},
 	pluginName: 'Logger',
-	initialize: function (Veams, opts) {
+	initialize: function (Veams, opts: LoggerOptions) {
 
 		if (opts) {
-			this.options = Veams.helpers.extend(this.options, opts || {});
+			this.options = extend(this.options, opts || {});
 		}
 
 		/**
@@ -23,7 +45,7 @@ const VeamsLogger = {
 			Veams.devmode = true;
 
 			if (window.sessionStorage && !sessionStorage.getItem('devmodeEnabled')) {
-				sessionStorage.setItem('devmodeEnabled', true);
+				sessionStorage.setItem('devmodeEnabled', 'true');
 			}
 
 			document.documentElement.classList.add(this.options.devmodeParam);
@@ -46,7 +68,7 @@ const VeamsLogger = {
 			logger.setAttribute('id', 'logger');
 			document.body.appendChild(logger);
 
-			console.write = function () {
+			const write = function () {
 				for (let i = 0; i < arguments.length; i++) {
 					if (typeof arguments[i] === 'object') {
 						logger.innerHTML +=
@@ -63,17 +85,17 @@ const VeamsLogger = {
 
 			console.error = function () {
 				logger.innerHTML += '[Error]<br />';
-				console.write.apply(this, arguments);
+				write.apply(this, arguments);
 			};
 
 			console.warn = function () {
 				logger.innerHTML += '[Warn]<br />';
-				console.write.apply(this, arguments);
+				write.apply(this, arguments);
 			};
 
 			console.log = function () {
 				logger.innerHTML += '[Log]<br />';
-				console.write.apply(this, arguments);
+				write.apply(this, arguments);
 			};
 		}
 	}

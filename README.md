@@ -1,3 +1,8 @@
+[//]: # ({{#wrapWith "content-section"}})
+
+[//]: #     ({{#wrapWith "grid-row"}})
+[//]: #         ({{#wrapWith "grid-col" colClasses="is-col-mobile-l-8"}})
+
 # VeamsLogger plugin
 
 The VeamsLogger plugin disables `console` logs by default. You can provide parameters (`?devmode`) in the URL to show the logs in your console.
@@ -6,7 +11,9 @@ Furthermore it gives you the possibility to add a logger (`?logger`) which will 
 
 The plugin is session based, means you only need to add the parameter once you started your project.
 
-TypeScript is supported. 
+TypeScript is also supported. 
+
+--------------
 
 ## Installation
 
@@ -21,6 +28,8 @@ npm install @veams/plugin-logger --save
 ``` bash 
 yarn add @veams/plugin-logger
 ```
+
+--------------
 
 ## Usage
 
@@ -40,6 +49,12 @@ Veams.initialize(() => {
 
 ### Options
 
-- _devmodeParam_ {`String`} [`'devmode'`] - You can override the url param key for the devmode which shows the logs in console.
-- _loggerParam_ {`String`} [`'logger'`] - You can override the url param key for the logger which gets appended to the body.
+| Option | Type | Default | Description |
+|:--- |:---:|:---:|:--- |
+| _devmodeParam_ | {`String`} | [`'devmode'`] | You can override the url param key for the devmode which shows the logs in console. |
+| _loggerParam_ | {`String`} | [`'logger'`] | You can override the url param key for the logger which gets appended to the body. |
 
+[//]: #         ({{/wrapWith}})
+[//]: #     ({{/wrapWith}})
+
+[//]: # ({{/wrapWith}})

@@ -5,7 +5,7 @@
 
 # VeamsLogger plugin
 
-The VeamsLogger plugin disables `console` logs by default. You can provide parameters (`?devmode`) in the URL to show the logs in your console.
+The `@veams/plugin-logger` package disables `console` logs by default. You can provide parameters (`?devmode`) in the URL to show the logs in your console.
 
 Furthermore it gives you the possibility to add a logger (`?logger`) which will be displayed on other devices.
 
@@ -33,12 +33,13 @@ yarn add @veams/plugin-logger
 
 ## Usage
 
-```js
+``` js
 import Veams from '@veams/core';
 import VeamsLogger from '@veams/plugin-logger';
 
 // Intialize core of Veams
 Veams.initialize(() => {
+
     // Add plugins to the Veams system
     Veams.use(VeamsLogger, {
         devmodeParam: 'debug', // default: 'devmode'
